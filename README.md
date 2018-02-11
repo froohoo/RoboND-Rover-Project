@@ -47,7 +47,7 @@ In an attempt to make the rover a wall crawler it seemed that one approach would
  
   ```python
     def get_contours(img, rgb_thresh=(170, 170, 170)):
-    
+    ```
     # get_contours finds all the contours present in the warped image. 
     # with the goal being to find edge between the sand and teh wall.
     # img:           wapred camera image
@@ -84,11 +84,7 @@ In an attempt to make the rover a wall crawler it seemed that one approach would
     # the CHAIN_APPROX_NONE ensures we get all points without compression/ extrapolation.
     # hierarchy returns nested contour heirarchies, which we aren't using
     imcont, contours, hierarchy = cv2.findContours(imcont,cv2.RETR_TREE,cv2.CHAIN_APPROX_NONE)
-    return color_select, imbin, contours```
-    
-    
-    
-    
+    return color_select, imbin, contours
 
 ***Collision ROI-Region of Interest (Not part of core submission requirments)***
  
