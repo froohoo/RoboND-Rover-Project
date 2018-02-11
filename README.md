@@ -60,6 +60,16 @@ def perspect_transform(img, src, dst):
  ![Color Thresholding Step](Thresholding.png)
 
 ```python
+
+    # 3) Apply color threshold to identify navigable terrain/obstacles/rock samples
+    #GOLD ROCK ~ rgb = 189,144,19 --> 213,183,25 --> 255,219,54
+    #OBSTACLES ~ rgb = 13,0,0
+    nav_threshold = (190, 180, 160)
+    tgt_threshold = (185, 140, 15)
+    obs_threshold = (100, 100, 100)
+    tgt_img = color_thresh(warped, tgt_threshold, tgt=True) # used for finding colored rocks
+    obs_img = color_thresh(warped, obs_threshold) # used for finding obstacles
+    
  def color_thresh(img, rgb_thresh=(160, 160, 160), tgt=False, tol=(40,40,40)):
     # img                  transformed (warped) camera image array
     # rgb_thresh           tgt==False (default) return array where > rgb_thresh = True (1)
