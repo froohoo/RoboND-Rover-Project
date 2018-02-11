@@ -23,9 +23,10 @@ Minimum criteria for success are as follows:
  5. Picking up samples as well as locating them.
  6. Returning to the starting point once all the samples are collected.
  
-For this submission, the minimum criteria were met, along with aspirational goals 4 & 5. An attempt was not made to return the rover back to its start position 
+For this submission, the minimum criteria were met, and an attepmt was made to complete aspirational goals 4 & 5. An attempt was not made to return the rover back to its start position (#6).
  
- 
-**Training / Calibration**
+  **Training / Calibration**
 
-The primary 
+As mentioned above, the first goal for this project is to process the impages for the front facing camera to extract mapping and navigational data. To do this, the following processing steps are applied to each image from the rover camera:
+
+ ***Perform a perspective transform***
