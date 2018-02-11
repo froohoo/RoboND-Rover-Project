@@ -85,6 +85,7 @@ In an attempt to make the rover a wall crawler it seemed that one approach would
     # hierarchy returns nested contour heirarchies, which we aren't using
     imcont, contours, hierarchy = cv2.findContours(imcont,cv2.RETR_TREE,cv2.CHAIN_APPROX_NONE)
     return color_select, imbin, contours
+    
     ```
     
 
