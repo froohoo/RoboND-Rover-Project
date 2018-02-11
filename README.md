@@ -45,7 +45,8 @@ In an attempt to make the rover a wall crawler it seemed that one approach would
 
  ![Contour Image](contour.png)
  
- '''def get_contours(img, rgb_thresh=(170, 170, 170)):
+  '''
+    def get_contours(img, rgb_thresh=(170, 170, 170)):
     
     # get_contours finds all the contours present in the warped image. 
     # with the goal being to find edge between the sand and teh wall.
