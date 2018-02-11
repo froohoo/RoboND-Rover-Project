@@ -27,7 +27,7 @@ For this submission, the minimum criteria were met, and an attepmt was made to c
  
  **Training / Calibration**
 
-As mentioned above, the first goal for this project is to process the images for the front facing rover camera to extract mapping and navigational data. To do this, the following processing steps are applied to each image from the rover camera:
+As mentioned above, the first goal for this project is to process the images for the front facing rover camera to extract mapping and navigational data. To do this, the following processing steps are applied to each image from the rover camera. The simulation was run on an Dell Lattitude E7420 on the 'Fastest' setting at resolution of 1360x768. Running the processing script in the Anaconda RoboND environment at these settings yielded between 17-24 images to be processed per second.
 
  ***Perform a perspective transform***
  
