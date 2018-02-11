@@ -27,7 +27,7 @@ For this submission, the minimum criteria were met, and an attepmt was made to c
  
  **Training / Calibration**
 
-As mentioned above, the first goal for this project is to process the impages for the front facing camera to extract mapping and navigational data. To do this, the following processing steps are applied to each image from the rover camera:
+As mentioned above, the first goal for this project is to process the images for the front facing rover camera to extract mapping and navigational data. To do this, the following processing steps are applied to each image from the rover camera:
 
  ***Perform a perspective transform***
  
