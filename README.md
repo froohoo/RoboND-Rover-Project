@@ -43,3 +43,19 @@ As mentioned above, the first goal for this project is to process the impages fo
 In an attempt to make the rover a wall crawler it seemed that one approach would be to locate the interface between the canyon wall and the sandy floor and use that for guidance. To that end functionality to detect contours was added to the perception module. The contours are extracted from the image using the OpenCV function [findContours](https://docs.opencv.org/2.4/modules/imgproc/doc/structural_analysis_and_shape_descriptors.html#findcontours). Since the result contains multiple contours, the largest one is extracted as one most likely to be of interest for wall navigation. Once this is complete a final step of masking off parts of the contour immediately to the right of the rover is performed. The a sample result of the contours, overlayed on the source image is shown below. The blue section represents to portion of the contour used for navigating along the wall.
 
 ![Contour Image](contour.png)
+
+***Transforming image pixels to rover centric coordinates***
+
+It is desirable to have a reference frame that puts the rover at the center of the coordinate system in many scenarios especially with respect to making navigation decisions. To that end, a pair of functions that takes in the x and y coordinates of the navigable pixels and transforms the coordinates to rover- centric was developed. Two functions are used because in addition to transforming the coordinate system to a rover-centric one the function also converts the source image from a 160x320 binary array to a list of x, and and list of y coordinates that correlate the nonzero pixels in that array. By breaking these tasks apart, I was able to re-use the coordinate transformation portion for the contours as well.
+
+***Converting rover centric coordinates to polar coordinates***
+
+Since the rover navigation will be done in large part by determining the azimuth to the best navigable terrain or the wall boundary, it is useful to have the rover centric coordinates in polar form rather than cartestian. This was accomplished using trigonometric relations for conversion as shown below in the code:
+
+9:46:40
+
+***Converting rover centric to world reference frame**
+
+Ultimately, the feed from the rover telemetry camera needs to be overlayed / added to a fixed ground map that rationalizes the rovers current position and yaw. This will ensrure that the rover's map is stitched together correctly as the rover explores the environment. To do this, a  coordinate system rotation, translation, and scaling is performed such that the rovers current POV is correctly mapped to the fixed world frame.
+
+
