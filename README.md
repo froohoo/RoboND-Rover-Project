@@ -36,7 +36,15 @@ As mentioned above, the first goal for this project is to process the images for
  ![Perspective Transform](mapping.png)
  
  ```python
- # Define a function to perform a perspective transform
+ 
+# 1) Define source and destination points for perspective transform
+    source = np.float32([[13,140], [302,140], [200,96], [118,96]])  #four pixel coords from source image
+    destination = np.float32([[155,155],[165,155],[165,145],[155,145]]) #four pixel coords from dest image
+    
+# 2) Apply perspective transform
+    warped = perspect_transform(Rover.img, source, destination)
+ 
+# Define a function to perform a perspective transform
 def perspect_transform(img, src, dst):
            
     M = cv2.getPerspectiveTransform(src, dst)
