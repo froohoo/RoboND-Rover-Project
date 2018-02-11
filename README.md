@@ -9,7 +9,7 @@ The search and sample return project is based on the concept of a hypothetical r
  * The canyon walls, which are typically angled away from teh floor at 10 - 20 degrees from the vertical and are primarily dark brown or black in color
  * The obsidian colored boulders placed in various areas, either as part of the canyon walls, or in the middle of the canyon floor.
 
-The first goal of this project is to process the images from the camera on the front of the rover to both map the region and provide the navigation inputs to the rover. The second goal consists of modifying the existing rover logic so that the outputs (speed, direction) of the rover are correctly set based on the navigation inputs to succssfully navigate the canyon environment. 
+The first goal of this project is to process the images from the camera on the front of the rover to both map the region and provide the navigation inputs to the rover. The second goal consists of modifying the existing rover logic so that the outputs (speed, direction) of the rover are correctly set based on the vision derived inputs to succssfully navigate the canyon environment. 
 
 Minimum criteria for success are as follows:
 
