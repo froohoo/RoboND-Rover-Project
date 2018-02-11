@@ -1,7 +1,7 @@
 ## Project: Search and Sample Return
 ### Project 1 For Udacity Robotics Nanodegree program
 
-*Introduction*
+**Introduction**
 
 The search and sample return project is based on the concept of a hypothetical rover mission. In the scenario, a rover is placed in a system of canyons along with obstacles and 'samples' that are represented by gold colored rocks. The contour of the canyon is closed (i.e. the environment is finite) and is pirmarily composed of 3 types of structures:
 
