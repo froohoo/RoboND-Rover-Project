@@ -20,10 +20,11 @@ Minimum criteria for success are as follows:
  In addition to the minimum passing requiremenents, aspirational goals may include:
  
  4. Mapping to a higher fidelity.
- 5. Picking up samples as well as locating them.
- 6. Returning to the starting point once all the samples are collected.
+ 5. Develop capability for rover to autonomously correct when stuck.
+ 6. Picking up samples as well as locating them.
+ 7. Returning to the starting point once all the samples are collected.
  
-For this submission, the minimum criteria were met, and an attepmt was made to complete aspirational goals 4 & 5. An attempt was not made to return the rover back to its start position (#6).
+For this submission, the minimum criteria were met, and an attepmt was made on the aspirational goals 4,5,6. An attempt was not made to return the rover back to its start position (#7).
  
  **Training / Calibration**
 
