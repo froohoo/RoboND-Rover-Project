@@ -38,7 +38,36 @@ As mentioned above, the first goal for this project is to process the images for
  ***Color Thresholding***
  
  Once the transformed (warped) image is obtained, the next step is to successfully determine the navigable / unavigable areas of the canyons. The approach used here was to use an rgb threshold to identify navigable pixels since the canyon floors are larglely a light color and the unavigable terrain is mostly dark in coloring. Good results were returned when using thresholds for red, green, blue of (190,180,160). The un-navigable terrain was assumed to be all the pixels that were not above the threshold. For identifying the gold sample rocks a slighly different approach needed to be used since a simple threshold could not be used to identify specific colors. This was addressed by adding the functionality to the color_thresh function to filter on pixels that were within a tolerance of a given color value. For the gold rocks rgb values of (185, 140, 15) with a tolerance of +/- 40 for each value to return true as a match. 
- 
+
+```python
+ def color_thresh(img, rgb_thresh=(160, 160, 160), tgt=False, tol=(40,40,40)):
+    # img                  transformed (warped) camera image array
+    # rgb_thresh           tgt==False (default) return array where > rgb_thresh = True (1)
+    #                      tgt==True  return array where rgb_thresh +/- rgb_thresh * tol = True (1)
+    # tol                  when tgt==True, sets the tolerance +/- for a pixel to return true
+    
+    # Create an array of zeros same xy size as img, but single channel
+    color_select = np.zeros_like(img[:,:,0])
+    
+    # if tgt == True we are looking for samples so look for +/- from rgb_thresh
+    if tgt:
+        bool_array = (abs(img[:,:,0] - rgb_thresh[0]) < tol[0]) \
+                   & (abs(img[:,:,1] - rgb_thresh[1]) < tol[1]) \
+                   & (abs(img[:,:,2] - rgb_thresh[2]) < tol[2]) 
+    
+    # tgt is false, we are looking for nav terrain/obstacles
+    else:    
+        # Require that each pixel be above all three threshold values in RGB
+        # above_thresh will now contain a boolean array with "True"
+        # where threshold was met
+        bool_array = (img[:,:,0] > rgb_thresh[0]) \
+                   & (img[:,:,1] > rgb_thresh[1]) \
+                   & (img[:,:,2] > rgb_thresh[2])
+    # Index the array of zeros with the boolean array and set to 1
+    color_select[bool_array] = 1
+    # Return the binary image
+    return color_select
+``` 
  ***Contours (Not part of core submission requirments)***
 
 In an attempt to make the rover a wall crawler it seemed that one approach would be to locate the interface between the canyon wall and the sandy floor and use that for guidance. To that end functionality to detect contours was added to the perception module. The contours are extracted from the image using the OpenCV function [findContours](https://docs.opencv.org/2.4/modules/imgproc/doc/structural_analysis_and_shape_descriptors.html#findcontours). Since the result contains multiple contours, the largest one is extracted as one most likely to be of interest for wall navigation. Once this is complete a final step of masking off parts of the contour immediately to the right of the rover is performed. The a sample result of the contours, overlayed on the source image is shown below. The blue section represents to portion of the contour used for navigating along the wall. The contour information is also updated in real time on the rover Hud with the region of interest highlighted in yellow.
