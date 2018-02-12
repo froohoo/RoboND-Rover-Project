@@ -418,8 +418,8 @@ The overall operation of the decision_step() function can be described as a stat
         return Rover```
         
 #### Sample Mode
-
-```  if Rover.mode == 'sample':
+```python
+     if Rover.mode == 'sample':
         
         # In sample mode we try and pick up  the target rocks. Sample just 
         # uses the pixel angle averaging technique for the gold rocks to 
