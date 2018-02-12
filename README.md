@@ -288,11 +288,9 @@ The overall operation of the decision_step() function can be described as a stat
      - **Entry Conditions:** sample detected while in forward. 
      - **Exit Conditions:** sample retrieved, pickle timer > time_limit
  
- 3.**pickle:** Error resolution mode to free stuck rover by rotating rover to find good nav solution.
- 
-     - **Entry Conditions:** pickle_timer > time_limit in forward or sample, every time sample is retrieved, nav_pixels < Rover.stop_forward    
-     
-     - **Exit Conditions:** Always exits to azimuth mode after finding the best nav solution in a 45 degree CCW sweep from intial yaw.
+ 3.**pickle:** Error resolution mode to free stuck rover by rotating rover to find good nav solution.  
+      - **Entry Conditions:** pickle_timer > time_limit in forward or sample, every time sample is retrieved, nav_pixels < Rover.stop_forward    
+      - **Exit Conditions:** Always exits to azimuth mode after finding the best nav solution in a 45 degree CCW sweep from intial yaw.
 
 
 
