@@ -26,7 +26,9 @@ Minimum criteria for success are as follows:
  
 For this submission, the minimum criteria were met, and an attepmt was made on the aspirational goals 4,5,6. An attempt was not made to return the rover back to its start position (#7).
  
- **Training / Calibration**
+ **Training / Calibration (The stesps from the notebook analysis**
+ 
+*Note that the steps below describe what was implemented in the perception.py module. [Notebook Analysis can be found here](Rover_Project_1)*
 
 As mentioned above, the first goal for this project is to process the images for the front facing rover camera to extract mapping and navigational data. To do this, the following processing steps are applied to each image from the rover camera. The simulation was run on an Dell Lattitude E7420 on the 'Fastest' setting at resolution of 1360x768. Running the processing script in the Anaconda RoboND environment at these settings allowed between 17-24 images to be processed per second depending on the complexity of the image.
 
