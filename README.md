@@ -174,12 +174,20 @@ It is desirable to have a reference frame that puts the rover at the center of t
     xpix_rvr_wal, ypix_rvr_wal = rover_coords_(xpos_w, ypos_w, imbin, -3)    #for wall/floor border pixels
     xpix_rvr_col, ypix_rvr_col = rover_coords(coll_roi)                      #for collision detection zone
     
+    def rover_coords(binary_img):
+        # Identify nonzero pixels
+        ypos, xpos = binary_img.nonzero()
+        # call separate function to convert to rover centric this way we can
+        # re-use for the contour conversion step as well
+        x_pixel, y_pixel = rover_coords_(xpos, ypos, binary_img, 0)
+        return x_pixel, y_pixel
+
     def rover_coords_(xpos, ypos, binary_img, offset):
-    # Calculate pixel positions with reference to the rover position being at the 
-    # center bottom of the image.  
-    x_pixel = -(ypos - binary_img.shape[0]).astype(np.float)
-    y_pixel = -(xpos - binary_img.shape[1]/2 + offset ).astype(np.float)
-    return x_pixel, y_pixel
+        # Calculate pixel positions with reference to the rover position being at the 
+        # center bottom of the image.  
+        x_pixel = -(ypos - binary_img.shape[0]).astype(np.float)
+        y_pixel = -(xpos - binary_img.shape[1]/2 + offset ).astype(np.float)
+        return x_pixel, y_pixel
  ```
 
 ***Converting rover centric to world reference frame**
