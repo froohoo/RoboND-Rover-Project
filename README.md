@@ -1,6 +1,14 @@
 ## Project: Search and Sample Return
 ### Project 1 For Udacity Robotics Nanodegree program
 
+#### Rubric Summary ####
+ 1. ***Writeup/Readme:*** This document
+ 2. ***Notebook/ Analysis:*** [Rover_Project_1_submission.ipynb](Rover_Project_1_submission.ipynb)
+ 3. ***Process_image():*** See Item 2
+ 4. ***Moviepy:*** [test_mapping.mp4](test_mapping.mp4)
+ 5. ***Autonomous Navigation And Mapping:*** [perception.py](perception.py) , [decision.py](decision.py)
+ 6. ***Movie of Autonomous Navigation:*** [Autnomous Navigation Screen Capture](https://youtu.be/aRY7VPWjQU4)
+
 **Introduction**
 
 The search and sample return project is based on the concept of a hypothetical rover mission. In the scenario, a rover is placed in a system of canyons along with obstacles and 'samples' that are represented by gold colored rocks. The contour of the canyon is closed (i.e. the environment is finite) and is pirmarily composed of 3 types of structures:
