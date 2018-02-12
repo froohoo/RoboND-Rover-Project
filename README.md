@@ -302,6 +302,7 @@ The overall operation of the decision_step() function can be described as a stat
   2. **collision_adj():** Modifies the steer angle if there are >40 object pixels detected directly in front of the angle. Attempts to steer the rover *away* from the mean pixel angle. Amount of correction is proportional to the amount of object pixels detected.
   
 #### Forward Mode
+
 ```python
     # Do we have any valid Nav agles? We could just be looking at a black wall.
     if Rover.nav_angles is not None:
