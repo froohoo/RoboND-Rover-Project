@@ -26,7 +26,7 @@ Minimum criteria for success are as follows:
  
 For this submission, the minimum criteria were met, and an attepmt was made on the aspirational goals 4,5,6. An attempt was not made to return the rover back to its start position (#7).
  
- **Training / Calibration (The stesps from the notebook analysis**
+ **Training / Calibration (The stesps from the notebook analysis)**
  
 *Note that the steps below describe what was implemented in the perception.py module. [Notebook Analysis can be found here](Rover_Project_1)*
 
