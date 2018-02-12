@@ -281,14 +281,14 @@ def to_polar_coords(x_pixel, y_pixel):
 The overall operation of the decision_step() function can be described as a state machine where different operating modes for the rover have specific criteria to enter that mode, and specific criteria to exit that mode. The different states that the rover can be in are listed below, with a brief description of their entry and exit conditions.
 
  1. **forward:** The forward mode of the rover is the primary mode used when navigating the environment.
- - **Entry Conditions:** navigable pixels > 0 
- - **Exit Conditions:** navigable pixels == 0, sample detected, pickle timer > time_limit  
+     - **Entry Conditions:** navigable pixels > 0 
+     - **Exit Conditions:** navigable pixels == 0, sample detected, pickle timer > time_limit  
  2. **sample:** The mode the rover is placed in when a sample is detected. 
- - **Entry Conditions:** sample detected while in forward. 
- - **Exit Conditions:** sample retrieved, pickle timer > time_limit
+     - **Entry Conditions:** sample detected while in forward. 
+     - **Exit Conditions:** sample retrieved, pickle timer > time_limit
  3.**pickle:** Error resolution mode to free stuck rover by rotating rover to find good nav solution.
- - **Entry Conditions:** pickle_timer > time_limit in forward or sample, every time sample is retrieved, nav_pixels < Rover.stop_forward
- - **Exit Conditions:** Always exits to azimuth mode after finding the best nav solution in a 45 degree CCW sweep from intial yaw.
+     - **Entry Conditions:** pickle_timer > time_limit in forward or sample, every time sample is retrieved, nav_pixels < Rover.stop_forward
+     - **Exit Conditions:** Always exits to azimuth mode after finding the best nav solution in a 45 degree CCW sweep from intial yaw.
 
 
 
