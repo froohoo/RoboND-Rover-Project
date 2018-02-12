@@ -415,7 +415,8 @@ The overall operation of the decision_step() function can be described as a stat
                     Rover.mode = 'pickle'
                     Rover.stopped_time = None
         print("=========================LEAVING==FORWARD===========================")   
-        return Rover```
+        return Rover
+ ```
         
 #### Sample Mode
 ```python
@@ -469,7 +470,8 @@ The overall operation of the decision_step() function can be described as a stat
                 Rover.throttle = 0
                 Rover.brake = Rover.brake_set
                 print ("=1=================LEAVING SAMPLE===================")
-                return Rover```
+                return Rover
+  ```
  
  #### Pickle Mode
  ```python
@@ -503,7 +505,8 @@ The overall operation of the decision_step() function can be described as a stat
         # If we get here, we are stopped, so take off the brake 
         if Rover.brake != 0:
             Rover.brake = 0
-            return Rover```
+            return Rover
+ ```
 
 
 
