@@ -162,6 +162,7 @@ def perception_step(Rover):
     obs_threshold = (100, 100, 100)
     tgt_img = color_thresh(warped, tgt_threshold, tgt=True) # used for finding colored rocks
     obs_img = color_thresh(warped, obs_threshold) # used for finding obstacles
+    threshedroi = color_thresh(roi, nav_threshold)   # color threshed roi for mapping.
     
     # Below determines the array used for detecting and trying to prevent collisions
     # it masks off only the section right in front of the rover.
@@ -169,7 +170,7 @@ def perception_step(Rover):
     coll_roi = cv2.bitwise_not(coll_roi)
     coll_roi = color_thresh(coll_roi,obs_threshold)
     
-    threshedroi = color_thresh(roi)   # color threshed roi for mapping.
+
     
 
     # 3.5) Retrieve the contours for determining navigation
@@ -199,8 +200,7 @@ def perception_step(Rover):
 
      
     # 5) Convert map image pixel values to rover-centric coords
-    # xpix_rvr_nav will be used when rover is in pickle mode to find a way out since following contours
-    # when obstacles are present doesn't always work for keeping rover clear of getting stuck.
+    
     xpix_rvr_nav, ypix_rvr_nav = rover_coords(nav_img)
     
     xpix_rvr_tgt, ypix_rvr_tgt = rover_coords(tgt_img) #for rock targets
@@ -226,7 +226,7 @@ def perception_step(Rover):
         #          Rover.worldmap[navigable_y_world, navigable_x_world, 2] += 1
     
     # Only if roll and pitch are within tolerance (roll, pitch)
-    tolerance = (1,1)
+    tolerance = (1.5,1)
     if ((Rover.roll < tolerance[0]) or \
        (Rover.roll > (360.0 - tolerance[0]))) and \
        ((Rover.pitch < tolerance[1]) or \
