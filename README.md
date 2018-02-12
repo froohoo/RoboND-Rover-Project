@@ -7,7 +7,24 @@
  3. ***Process_image():*** See Item 2
  4. ***Moviepy:*** [test_mapping.mp4](test_mapping.mp4)
  5. ***Autonomous Navigation And Mapping:*** [perception.py](perception.py) , [decision.py](decision.py)
- 6. ***Movie of Autonomous Navigation:*** [Autnomous Navigation Screen Capture](https://youtu.be/aRY7VPWjQU4)
+ 6. ***Movie of Autonomous Navigation:*** [Autnomous Navigation Screen Capture]()
+ 
+**Summary Results**
+The rover was run for two 15 minute runs, using the perception.py and decision.py files found in this project and the results were as follows: 
+***Run 1***
+    - Mapped:55.4%
+    - Fidelity: 96.4%
+    - Rocks Located: 5
+    - Rocks Collected: 5
+
+***Run 2***
+    - Mapped:56.5%
+    - Fidelity: 96.4%
+    - Rocks Located: 5
+    - Rocks Collected: 5
+The three-fold navigation technique based on navigable-pixels, wall-floor boundary, and collision avoidance steering work well together to keep the rover tracking against the wall and avoiding most obstacles. Additionally, with the current error recovery logic, the rover can run perpetually without human intervention and is able to free itself from all pits / rocks / dead ends found in the current enviroment. 
+
+Results could be improved by implementing a more systematic terrain covering algorithm such that the rover avoided areas it had already visited. The rock collection (sample mode) while successful most times, could be modfied to more reliably pick up the gold rocks. 
 
 **Introduction**
 
