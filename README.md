@@ -7,7 +7,7 @@
  3. ***Process_image():*** See Item 2
  4. ***Moviepy:*** [test_mapping.mp4](test_mapping.mp4)
  5. ***Autonomous Navigation And Mapping:*** [perception.py](perception.py) , [decision.py](decision.py)
- 6. ***Movie of Autonomous Navigation:*** [Autnomous Navigation Screen Capture]()
+ 6. ***Movie of Autonomous Navigation:*** [Autnomous Navigation Screen Capture](https://youtu.be/aBy4OzKQXBg)
  
 **Summary Results**
 The rover was run for two 15 minute runs, using the perception.py and decision.py files found in this project and the results were as follows: 
