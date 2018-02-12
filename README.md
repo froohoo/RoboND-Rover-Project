@@ -10,14 +10,15 @@
  6. ***Movie of Autonomous Navigation:*** [Autnomous Navigation Screen Capture](https://youtu.be/aBy4OzKQXBg)
  
 **Summary Results**
-The rover was run for two 15 minute runs, using the perception.py and decision.py files found in this project and the results were as follows: 
-***Run 1***
+The rover was run for two 15 minute runs, using the perception.py and decision.py files found in this project and the results were as follows:
+
+***Run 1***  
     - Mapped:55.4%
     - Fidelity: 96.4%
     - Rocks Located: 5
     - Rocks Collected: 5
 
-***Run 2***
+***Run 2***  
     - Mapped:56.5%
     - Fidelity: 96.4%
     - Rocks Located: 5
