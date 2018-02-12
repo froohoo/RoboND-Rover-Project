@@ -252,10 +252,27 @@ def pix_to_world(xpix, ypix, xpos, ypos, yaw, world_size, scale):
 
 Since the rover navigation will be done in large part by determining the azimuth to the best navigable terrain and the wall boundary, it is useful to have the rover centric coordinates in polar form rather than cartestian. This was accomplished using trigonometric relations for conversion as shown below in the code. As part of the basic project requirements, conversion is done on the cartesian pixel sets for the color threshed canyon floor pixels, the wall/floor boundary contour pixels, and the gold sample pixels:
 
+```python 
+ # 8) Convert rover-centric pixel positions to polar coordinates
+    # Update Rover pixel distances and angles
+    Rover.wal_dists, Rover.wal_angles = to_polar_coords(xpix_rvr_wal, ypix_rvr_wal)
+    Rover.nav_dists, Rover.nav_angles = to_polar_coords(xpix_rvr_nav, ypix_rvr_nav)
+    Rover.tgt_dists, Rover.tgt_angles = to_polar_coords(xpix_rvr_tgt, ypix_rvr_tgt)
+    Rover.col_dists, Rover.col_angles = to_polar_coords(xpix_rvr_col, ypix_rvr_col)
+
+# Define a function to convert to radial coords in rover space
+def to_polar_coords(x_pixel, y_pixel):
+    # Convert (x_pixel, y_pixel) to (distance, angle) 
+    # in polar coordinates in rover space
+    # Calculate distance to each pixel
+    dist = np.sqrt(x_pixel**2 + y_pixel**2)
+    # Calculate angle away from vertical for each pixel
+    angles = np.arctan2(y_pixel, x_pixel)
+    return dist, angles
 
 
+```
 
-9:46:40
 
 
 
