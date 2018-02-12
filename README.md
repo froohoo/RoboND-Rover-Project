@@ -508,5 +508,39 @@ The overall operation of the decision_step() function can be described as a stat
             return Rover
  ```
 
+#### Azimuth Mode
+
+```python
+ if Rover.mode == 'azimuth':
+        
+    # In this state, the Rover will stop and turn until it's yaw is approx = to the Rover.tgt_angle
+    # Only currently used in pickle mode to have the rover seek the tgt_angle after it is found. 
+        print("==================================AZIMUTH===========================")
+    
+    # Check to make sure tgt_angle is valid before proceeding. If not, go into forward mode
+        if np.isnan(Rover.tgt_angle):
+            Rover.mode = 'forward'
+            return Rover
+
+        # first make sure that the rover is stopped
+        if abs(Rover.vel) >= .1:
+            Rover.throttle = 0
+            Rover.brake = Rover.brake_set
+            return Rover
+        
+        # rover is stopped, release the brake and turn right. Turning right
+        # makes sense since we want to turn back to the bst_angle found by 
+        # pickle 
+        else:
+            Rover.brake = 0
+            Rover.steer = -15
+        
+        # if we are within 3 degrees of teh tgt_angle, then that's good enough
+        # put the rover in forward and leave azimuth mode
+        if abs(Rover.yaw - Rover.tgt_angle) < 3:
+            Rover.mode = 'forward'
+        print("========================LEAVING AZIMUTH===========================")
+        return Rover
+```
 
 
