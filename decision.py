@@ -263,19 +263,20 @@ def decision_step(Rover):
             #   
             #   Step 2: Calculate the preference for navigable pixel based navigation
             #           over wall contour navigation (p_n). 
-            #            --> a: If there are any obstacles in front of the 
-            #                   rover, increase the preference for navigating towards
-            #                   navigable pixels based on how many navigable pixels 
-            #                   are detected.
-            #            --> b: If there are any wall contour pixels available for 
+            #
+            #            --> a: If there are any wall contour pixels available for 
             #                   navigation, navigate using the wall pixel angle 
             #                   compbined with the navigable pixel mean, weighted 
             #                   by teh number of navigable pixels. More nav pixels = 
             #                   more bias away from the wall toward the naviable pixels.
-            #            --> c: final collision adjustment done by the function
+            #            --> b: final collision adjustment done by the function
             #                   collistion_adj, that will over-ride a and b completely
             #                   if there appears to be enough of a collision hazard
             #                   directly in front of the rover.
+            #            --> c: If there are any obstacles in front of the 
+            #                   rover, increase the preference for navigating towards
+            #                   navigable pixels based on how many navigable pixels 
+            #                   are detected.
             #
             #   Step 3: Look for samples, and go into sample mode if any are seen
             #
