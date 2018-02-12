@@ -149,11 +149,39 @@ In an attempt to make the rover a wall crawler it seemed that one approach would
 
 ***Collision ROI-Region of Interest (Not part of core submission requirments)***
  
- Although the results of navigating off of the navigable pixels was good, and augmenting that with the wall pixels was better, there were still times when the rover would run into obstacles in it's path. A fully developed approach to address this would have been to build a model for avoiding collisions using the data stored in the world map and planning routes around obstacles. However, a more trivial approach was leveraged that improves the performance avoiding collisions without the complication of developing such a model. The approach used here is to select a small area (20px wide x 20px deep) in front of the rover and use it to detect obstacles in real time. The decision script then uses this information to take action in an attempt to avoid a collision. The primary drawback to this approach is that the camera on the rover has a FOV that can not see obstacles immediately to the side, or above the rover. So while this addition yielded an improvement, there are many locations in the environment where the rover has a clear FOV (no obstacles), but can still collide with or get hung up on obstacles.
+ Although the results of navigating off of the navigable pixels were passable, and augmenting that with navigation by wall pixels was better, there were still times when the rover would run into obstacles in it's path. A fully developed approach to address this would have been to build a model for avoiding collisions using the data stored in the world map and planning routes around obstacles. However, a more simplistic approach was leveraged that improves the performance avoiding collisions without the complication of developing such a model. The approach used here is to select a small area (20px wide x 20px deep) in front of the rover and use it to detect obstacles in real time. The decision script then uses this information to take action in an attempt to avoid a collision. The primary drawback to this approach is that the camera on the rover has a FOV that can not see obstacles immediately to the side, or above the rover. So while this addition yielded an improvement, there are many locations in the environment where the rover has a clear FOV (no obstacles), but can still collide with or get hung up on obstacles.
+ 
+ ```python
+    # Below determines the array used for detecting and trying to prevent collisions
+    # it masks off only the section right in front of the rover.
+    coll_roi = np.copy(warped[130:150, 150:170])
+    coll_roi = cv2.bitwise_not(coll_roi)
+    coll_roi = color_thresh(coll_roi,obs_threshold
+ ```
 
 ***Transforming image pixels to rover centric coordinates***
 
 It is desirable to have a reference frame that puts the rover at the center of the coordinate system in many scenarios especially with respect to making navigation decisions. To that end, a pair of functions that takes in the x and y coordinates of the navigable pixels and transforms the coordinates to rover- centric was developed. Two functions are used because in addition to transforming the coordinate system to a rover-centric one the function also converts the source image from a 160x320 binary array to a list of x, and and list of y coordinates that correlate the nonzero pixels in that array. By breaking these tasks apart, I was able to re-use the coordinate transformation portion for the contours as well.
+
+'''python
+    # 5) Convert map image pixel values to rover-centric coords
+    # xpix_rvr_nav will be used when rover is in pickle mode to find a way out since following contours
+    # when obstacles are present doesn't always work for keeping rover clear of getting stuck.
+    xpix_rvr_nav, ypix_rvr_nav = rover_coords(nav_img)
+    
+    xpix_rvr_tgt, ypix_rvr_tgt = rover_coords(tgt_img)                       #for rock targets
+    xpix_rvr_obs, ypix_rvr_obs = rover_coords(obs_img)                       #for obstacles
+    xpix_rvr_msk, ypix_rvr_msk = rover_coords(threshedroi) #for mappinig     #for mapping nav pixels
+    xpix_rvr_wal, ypix_rvr_wal = rover_coords_(xpos_w, ypos_w, imbin, -3)    #for wall/floor border pixels
+    xpix_rvr_col, ypix_rvr_col = rover_coords(coll_roi)                      #for collision detection zone
+    
+    def rover_coords_(xpos, ypos, binary_img, offset):
+    # Calculate pixel positions with reference to the rover position being at the 
+    # center bottom of the image.  
+    x_pixel = -(ypos - binary_img.shape[0]).astype(np.float)
+    y_pixel = -(xpos - binary_img.shape[1]/2 + offset ).astype(np.float)
+    return x_pixel, y_pixel
+'''
 
 ***Converting rover centric to world reference frame**
 
