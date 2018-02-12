@@ -163,7 +163,7 @@ In an attempt to make the rover a wall crawler it seemed that one approach would
 
 It is desirable to have a reference frame that puts the rover at the center of the coordinate system in many scenarios especially with respect to making navigation decisions. To that end, a pair of functions that takes in the x and y coordinates of the navigable pixels and transforms the coordinates to rover- centric was developed. Two functions are used because in addition to transforming the coordinate system to a rover-centric one the function also converts the source image from a 160x320 binary array to a list of x, and and list of y coordinates that correlate the nonzero pixels in that array. By breaking these tasks apart, I was able to re-use the coordinate transformation portion for the contours as well.
 
-'''python
+ ```python
     # 5) Convert map image pixel values to rover-centric coords
     # xpix_rvr_nav will be used when rover is in pickle mode to find a way out since following contours
     # when obstacles are present doesn't always work for keeping rover clear of getting stuck.
@@ -181,7 +181,7 @@ It is desirable to have a reference frame that puts the rover at the center of t
     x_pixel = -(ypos - binary_img.shape[0]).astype(np.float)
     y_pixel = -(xpos - binary_img.shape[1]/2 + offset ).astype(np.float)
     return x_pixel, y_pixel
-'''
+ ```
 
 ***Converting rover centric to world reference frame**
 
