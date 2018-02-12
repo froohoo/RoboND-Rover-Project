@@ -165,8 +165,7 @@ It is desirable to have a reference frame that puts the rover at the center of t
 
  ```python
     # 5) Convert map image pixel values to rover-centric coords
-    # xpix_rvr_nav will be used when rover is in pickle mode to find a way out since following contours
-    # when obstacles are present doesn't always work for keeping rover clear of getting stuck.
+    
     xpix_rvr_nav, ypix_rvr_nav = rover_coords(nav_img)
     
     xpix_rvr_tgt, ypix_rvr_tgt = rover_coords(tgt_img)                       #for rock targets
